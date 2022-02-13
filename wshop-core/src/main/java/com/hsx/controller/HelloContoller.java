@@ -1,4 +1,4 @@
-package com.hsx.core.controller;
+package com.hsx.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
