@@ -1,21 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
 <head>
   <meta charset="UTF-8">
-  <title>登录</title>
+  <title>智慧超市后台管理系统</title>
+  <style th:inline="text">
+    body{
+      background: url("[[@{/}]]images/login.jpg");
+      position:fixed;  top: 0;  left: 0;  width:100%;  height:100%;  min-width: 1000px;  z-index:-10;  zoom: 1; background-repeat: no-repeat;  background-size: cover;  -webkit-background-size: cover;  -o-background-size: cover;  background-position: center 0;
+    }
+    input:focus{
+      border-color: #66afe9;
+      outline: 0;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+    }
+    input{
+      outline-style: none ;
+      border: 1px solid #ccc;
+      border-radius: 50px;
+      padding: 13px 14px;
+      height: 60px;
+      width: 500px;
+      font-size: 20px;
+      font-weight: 700;
+      font-family: "Microsoft soft";
+      text-align: center;
+    }
+    button{
+      outline-style: none ;
+      border: 1px solid #ccc;
+      border-radius: 50px;
+      padding: 13px 14px;
+      height: 60px;
+      width: 530px;
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      background-color: #65d2a4;
+      font-family: "Microsoft soft";
+    }
+    div{
+      margin-top: 30px;
+    }
+    form{
+      position: relative;
+      left: 59%;
+      top: 42%;
+    }
+
+  </style>
 </head>
 <body>
 
-<h1>登录</h1>
-<hr>
 
-
-<p th:text="${msg}" style="color: red"></p>
 <form th:action="@{/login}">
-  <p>用户名：<input type="text" name="username"></p>
-  <p>密码：<input type="password" name="password"></p>
-  <p> <button type="submit">登录</button></p>
+  <div>
+    <p th:text="${msg}" style="color: red"></p>
+  </div>
+  <div class="input-icons">
+    <input type="text" placeholder="请输入用户名" name="username">
+  </div>
+  <div class="input-icons">
+    <input type="password" placeholder="请输入密码" name="password">
+  </div>
+  <div>
+    忘记密码
+  </div>
+  <div>
+    <i class="fa fa-key icon"></i>
+    <button type="submit">登录</button>
+  </div>
 </form>
+
 
 </body>
 </html>

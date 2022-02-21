@@ -38,6 +38,11 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/user/updata","perms[user:updata]");
 
         filterChainDefinitionMap.put("/user/*", "authc");
+        filterChainDefinitionMap.put("/static/**", "anon");
+        filterChainDefinitionMap.put("/images/**", "anon");
+        filterChainDefinitionMap.put("/layui/**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 

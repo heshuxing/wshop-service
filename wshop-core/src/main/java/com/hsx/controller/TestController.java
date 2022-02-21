@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
 
-    @RequestMapping({"/","/index"})
+    @RequestMapping("/")
     public String toIndex(Model model){
         model.addAttribute("msg","hello,shiro");
-        return "index";
+        return "login";
     }
 
     @RequestMapping("/user/add")
@@ -32,11 +32,6 @@ public class TestController {
     @RequestMapping("/user/updata")
     public String updata(){
         return "user/updata";
-    }
-
-    @RequestMapping("/toLogin")
-    public String toLogin(){
-        return "login";
     }
 
     @RequestMapping("/login")
