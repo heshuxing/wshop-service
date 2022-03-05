@@ -2,77 +2,112 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
 <head>
-  <meta charset="UTF-8">
-  <title>智慧超市后台管理系统</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>登录 - 智慧超市(WShop)后台管理系统</title>
+  <link rel="icon" th:href="@{/images/favicon.ico}" type="image/ico">
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/css/materialdesignicons.min.css}" rel="stylesheet">
+  <link th:href="@{/css/style.min.css}" rel="stylesheet">
   <style th:inline="text">
     body{
       background: url("[[@{/}]]images/login.jpg");
       position:fixed;  top: 0;  left: 0;  width:100%;  height:100%;  min-width: 1000px;  z-index:-10;  zoom: 1; background-repeat: no-repeat;  background-size: cover;  -webkit-background-size: cover;  -o-background-size: cover;  background-position: center 0;
     }
-    input:focus{
-      border-color: #66afe9;
-      outline: 0;
-      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-      box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
-    }
-    input{
-      outline-style: none ;
-      border: 1px solid #ccc;
-      border-radius: 50px;
-      padding: 13px 14px;
-      height: 60px;
-      width: 500px;
-      font-size: 20px;
-      font-weight: 700;
-      font-family: "Microsoft soft";
-      text-align: center;
-    }
-    button{
-      outline-style: none ;
-      border: 1px solid #ccc;
-      border-radius: 50px;
-      padding: 13px 14px;
-      height: 60px;
-      width: 530px;
-      font-size: 20px;
-      font-weight: 700;
-      color: white;
-      background-color: #65d2a4;
-      font-family: "Microsoft soft";
-    }
-    div{
-      margin-top: 30px;
-    }
-    form{
+    .login-box {
+      background-color: rgba(255, 255, 255, .25);
       position: relative;
-      left: 59%;
-      top: 42%;
+      left: 20%;
+      top: 10%;
     }
-
+    .login-box p:last-child {
+      margin-bottom: 0px;
+    }
+    .login-form .form-control {
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+    }
+    .login-form .has-feedback {
+      position: relative;
+    }
+    .login-form .has-feedback .form-control {
+      padding-left: 36px;
+    }
+    .login-form .has-feedback .mdi {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: auto;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      z-index: 4;
+      color: #dcdcdc;
+      display: block;
+      text-align: center;
+      pointer-events: none;
+    }
+    .login-form .has-feedback.row .mdi {
+      left: 15px;
+    }
+    .login-form .form-control::-webkit-input-placeholder{
+      color: rgba(255, 255, 255, .8);
+    }
+    .login-form .form-control:-moz-placeholder{
+      color: rgba(255, 255, 255, .8);
+    }
+    .login-form .form-control::-moz-placeholder{
+      color: rgba(255, 255, 255, .8);
+    }
+    .login-form .form-control:-ms-input-placeholder{
+      color: rgba(255, 255, 255, .8);
+    }
+    .login-form .custom-control-label::before {
+      background: rgba(0, 0, 0, 0.3);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
   </style>
 </head>
-<body>
 
+<body th:class="center-vh">
+<div class="login-box p-5 w-420 mb-0 mr-2 ml-2">
+  <div class="text-center mb-3">
+    <img alt="light year admin" th:src="@{/images/logo.jpg}">
+  </div>
+  <form th:action="@{/login}" method="post" class="login-form">
+    <div class="form-group has-feedback">
+      <span class="mdi mdi-account" aria-hidden="true"></span>
+      <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
+    </div>
 
-<form th:action="@{/login}">
-  <div>
-    <p th:text="${msg}" style="color: red"></p>
-  </div>
-  <div class="input-icons">
-    <input type="text" placeholder="请输入用户名" name="username">
-  </div>
-  <div class="input-icons">
-    <input type="password" placeholder="请输入密码" name="password">
-  </div>
-  <div>
-    忘记密码
-  </div>
-  <div>
-    <i class="fa fa-key icon"></i>
-    <button type="submit">登录</button>
-  </div>
-</form>
+    <div class="form-group has-feedback">
+      <span class="mdi mdi-lock" aria-hidden="true"></span>
+      <input type="password" class="form-control" id="password" name="password" placeholder="密码">
+    </div>
 
+    <div class="form-group has-feedback row">
+      <div class="col-7">
+        <span class="mdi mdi-check-all form-control-feedback" aria-hidden="true"></span>
+        <input type="text" name="captcha" class="form-control" placeholder="验证码">
+      </div>
+      <div class="col-5 text-right">
+        <img th:src="@{/images/captcha.png}" class="pull-right" id="captcha" style="cursor: pointer;" onclick="this.src=this.src+'?d='+Math.random();" title="点击刷新" alt="captcha">
+      </div>
+    </div>
 
+    <div class="form-group">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="rememberme">
+        <label class="custom-control-label not-user-select text-green" for="rememberme">记住密码</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-block btn-primary" type="submit">立即登录</button>
+    </div>
+  </form>
+</div>
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript">;</script>
 </body>
 </html>

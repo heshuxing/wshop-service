@@ -44,6 +44,13 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
 
+        filterChainDefinitionMap.put("/goods/**", "anon");
+        filterChainDefinitionMap.put("/home/**", "anon");
+        filterChainDefinitionMap.put("/intelligent/**", "anon");
+        filterChainDefinitionMap.put("/sales/**", "anon");
+        filterChainDefinitionMap.put("/security/**", "anon");
+        filterChainDefinitionMap.put("/staff/**", "anon");
+        filterChainDefinitionMap.put("/**", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         //无权限设置登录的请求
